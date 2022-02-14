@@ -18,5 +18,8 @@
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",
     "@types/command-line-usage": "^5.0.2"
+  },
+  "bin": {
+    "dir-search": "./index.js"
   }
 }
