@@ -43,3 +43,7 @@ By default, the search is **NOT case-sensitive**. Please see help for more detai
 ```
 dir-search -h
 ```
+
+## Use-cases
+
+- When you are renaming bunch of folders or files manually and you are looking for files or folders that you haven't renamed yet.
