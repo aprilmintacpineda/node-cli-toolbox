@@ -4,6 +4,13 @@
   "description": "A tool to allow you to search an entire directory for files and folders that matches a name",
   "main": "index.js",
   "license": "MIT",
+  "keywords": [
+    "search",
+    "directory",
+    "file",
+    "directories",
+    "files"
+  ],
   "author": {
     "name": "April Mintac Pineda"
   },
