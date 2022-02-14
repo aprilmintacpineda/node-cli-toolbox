@@ -1,0 +1,22 @@
+{
+  "name": "node-cli-search",
+  "version": "1.0.0",
+  "description": "A tool to allow you to search an entire directory for files and folders that matches a name",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "April Mintac Pineda"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aprilmintacpineda/node-cli-toolbox.git"
+  },
+  "dependencies": {
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.0",
+    "@types/command-line-usage": "^5.0.2"
+  }
+}
