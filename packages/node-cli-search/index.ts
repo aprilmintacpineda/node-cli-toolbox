@@ -28,7 +28,7 @@ const optionList: Array<OptionDefinition> = [
     name: "ignore",
     alias: "i",
     description:
-      "Required: comma separated list of folders you don't want to search in, e.g., if you put node_modules node-cli-search will not search in node_modules. This is case-sensitive.",
+      "comma separated list of folders you don't want to search in, e.g., if you put node_modules node-cli-search will not search in node_modules. This is case-sensitive.",
     type: String,
     isRequired: true,
   },
@@ -72,14 +72,15 @@ if (argv.help) {
 
   console.log(usage);
 } else {
+  // validation required fields
+  if (!argv.query) throw new Error("Please provide the query option");
+
   const options: Options = {
     ...argv,
     context: argv.context || process.cwd(),
     query: argv.sensitive ? argv.query : argv.query.toLocaleLowerCase(),
     ignore: (argv.ignore || "").split(",").map((ignore) => ignore.trim()),
   };
-
-  if (!options.query) throw new Error("Please provide the query option");
 
   searchRecursive(options);
 }
