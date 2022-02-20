@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2022-02-20
+
+### node-cli-search
+
+#### Changed
+
+- Renamed from `dir-search` to `node-cli-search`
+
+### node-cli-replace
+
+#### Changed
+
+- Renamed from `dir-replace` to `node-cli-replace`
+
+#### Added
+
+- `-l` flag.
+
+## [1.0.3] - 2022-02-20
+
+### node-cli-search
+
+No changes.
+
+### node-cli-replace
+
+#### Added
+
+- First release
+
 ## [1.0.3] - 2022-02-20
 
 ### node-cli-search
