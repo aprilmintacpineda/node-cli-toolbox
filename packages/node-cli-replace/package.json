@@ -1,6 +1,6 @@
 {
   "name": "node-cli-replace",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "A tool that allows you to replace matching texts in files or a file",
   "main": "index.js",
   "license": "MIT",
