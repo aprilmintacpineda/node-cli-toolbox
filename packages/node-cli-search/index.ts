@@ -58,7 +58,7 @@ const argv = cliArgs(optionList) as _Options;
 if (argv.help) {
   const usage = cliUsage([
     {
-      header: "node-search-cli",
+      header: "node-cli-search",
       content:
         "A CLI tool written in TypeScript that allows you to search a whole directory for a file or folder",
     },
