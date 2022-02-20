@@ -27,6 +27,6 @@
     "@types/command-line-usage": "^5.0.2"
   },
   "bin": {
-    "dir-search": "./index.js"
+    "node-cli-search": "./index.js"
   }
 }
