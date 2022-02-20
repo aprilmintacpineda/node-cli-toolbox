@@ -9,20 +9,22 @@ export type Options = {
   help: boolean;
 };
 
-function shouldIgnore(needle: string, list: Array<string>) {
-  return Boolean(list.find((item) => item.includes(needle)));
+function shouldIgnore(filePath: string, list: Array<string>) {
+  return Boolean(
+    list.find((item) => filePath.includes(item) || item.includes(filePath))
+  );
 }
 
 export async function searchRecursive(options: Options) {
-  const results = await fs.readdir(
+  const filePaths = await fs.readdir(
     path.resolve(process.cwd(), options.context)
   );
 
   await Promise.all(
-    results.map(async (result) => {
-      if (shouldIgnore(result, options.ignore)) return;
+    filePaths.map(async (filePath) => {
+      if (shouldIgnore(filePath, options.ignore)) return;
 
-      let fullPath = path.resolve(options.context, result);
+      let fullPath = path.resolve(options.context, filePath);
       const stat = await fs.stat(fullPath);
 
       if (stat.isDirectory()) {
