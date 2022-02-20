@@ -30,7 +30,6 @@ const optionList: Array<OptionDefinition> = [
     description:
       "comma separated list of folders you don't want to search in, e.g., if you put node_modules node-cli-search will not search in node_modules. This is case-sensitive.",
     type: String,
-    isRequired: true,
   },
   {
     name: "context",
@@ -38,7 +37,6 @@ const optionList: Array<OptionDefinition> = [
     description:
       "The folder you want to start searching in. By default, this will search the current directory.",
     type: String,
-    isRequired: true,
   },
   {
     name: "sensitive",
