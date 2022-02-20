@@ -8,6 +8,7 @@ export type Options = {
   ignore: Array<string>;
   context: string;
   help: boolean;
+  line: boolean;
 };
 
 function shouldIgnore(filePath: string, list: Array<string>) {
@@ -36,14 +37,30 @@ export async function replaceRecursive(options: Options) {
       } else {
         if (!new RegExp(options.file, "gm").test(fullPath)) return;
 
-        let contents = await fs.readFile(fullPath, "utf-8");
+        let originalContents = await fs.readFile(fullPath, "utf-8");
 
-        contents = contents.replace(
-          new RegExp(options.query, "gm"),
-          options.value
-        );
+        if (!options.line) {
+          let contents = originalContents.replace(
+            new RegExp(options.query, "gm"),
+            options.value
+          );
 
-        await fs.writeFile(fullPath, contents);
+          await fs.writeFile(fullPath, contents);
+        } else {
+          const lines = originalContents.split("\n");
+          const rule = new RegExp(options.query, "gm");
+
+          let contents = lines.reduce((result, currentLine) => {
+            if (rule.test(currentLine)) {
+              if (!options.value) return result;
+              return `${result}${options.value}\n`;
+            }
+
+            return `${result}${currentLine}\n`;
+          }, "");
+
+          await fs.writeFile(fullPath, contents);
+        }
 
         console.log("WROTE in:", fullPath);
       }

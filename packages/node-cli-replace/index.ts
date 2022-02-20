@@ -31,7 +31,6 @@ const optionList: Array<OptionDefinition> = [
     description:
       "The value that you want to put in place of what you wanted to be replaced. If you don't provide a value, the matching strings will effectively be removed.",
     type: String,
-    isRequired: true,
   },
   {
     name: "file",
@@ -40,6 +39,13 @@ const optionList: Array<OptionDefinition> = [
       "Required: The file that you want to be processed. This will be used in regex as case-sensitive.",
     type: String,
     isRequired: true,
+  },
+  {
+    name: "line",
+    alias: "l",
+    description:
+      "If you want it to behave in a line-by-line manner. This is useful when you want to remove or replace the whole line with something else.",
+    type: Boolean,
   },
   {
     name: "ignore",
