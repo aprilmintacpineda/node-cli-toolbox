@@ -36,9 +36,15 @@ const optionList: Array<OptionDefinition> = [
     name: "file",
     alias: "f",
     description:
-      "Required: The file that you want to be processed. This will be used in regex as case-sensitive.",
+      "Required: The specific file that you want to be processed. This will be used in regex as case-sensitive. If provided, it will look for the file in the current directory, or in the directory provided in context parameter, and only process that one file.",
     type: String,
-    isRequired: true,
+  },
+  {
+    name: "files",
+    alias: "d",
+    description:
+      "Required: The files that you want to be processed. This will be used in regex as case-sensitive. If provided, it will look for ALL FILES WITH MATCHING FILE NAME in the current directory, or in the directory provided in context parameter, and process ALL matching files.",
+    type: String,
   },
   {
     name: "line",
@@ -87,8 +93,15 @@ if (argv.help) {
   console.log(usage);
 } else {
   // validation required fields
-  if (!argv.query) throw new Error("Please provide the query option");
-  if (!argv.file) throw new Error("Please provide the file option");
+  if (!argv.query) throw new Error("Please provide the query option.");
+
+  if (!argv.file && !argv.files)
+    throw new Error("Please provide the file or files option.");
+
+  if (argv.file && argv.files)
+    throw new Error("Please only provide file or files option but not both.");
+
+  const start = performance.now();
 
   const options: Options = {
     ...argv,
@@ -97,5 +110,12 @@ if (argv.help) {
     value: argv.value || "",
   };
 
-  replaceRecursive(options);
+  replaceRecursive(options)
+    .then(() => {
+      console.log("Completed in", Math.ceil(performance.now() - start), "ms");
+    })
+    .catch((error) => {
+      console.error(error);
+      process.exit(1);
+    });
 }
