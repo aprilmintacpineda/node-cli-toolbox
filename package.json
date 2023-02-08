@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "@types/node": "^17.0.17",
-    "lerna": "^4.0.0"
+    "@types/node": "^18.13.0",
+    "lerna": "^6.4.1"
   },
   "scripts": {
     "postinstall": "lerna bootstrap",
